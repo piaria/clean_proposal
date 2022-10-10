@@ -25,6 +25,8 @@ mkdir -p tests
 ## Extras
 Puede simplificar las views https://github.com/oxan/djangorestframework-dataclasses
 
+https://github.com/rsinger86/drf-typed
+
 Para usar Pydantic con DRF 
 https://github.com/yezz123/pyngo
 https://www.obytes.com/blog/integrate-pydantic-with-django-and-django-rest-framework
