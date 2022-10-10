@@ -1,7 +1,4 @@
-from django.db import transaction
-from message.business_logic.dtos import MessageDetailDTO
-from message.business_logic.exceptions import BusinessException, DomainModelNotFound
-from user.business_logic.dtos import UserDetailDTO
+from user.business_logic.dtos import UserDetailDTO, UserCreatedData
 
 from ..models import User
 
@@ -26,14 +23,15 @@ def get_users_by_id(ids: list[int]):
 
 
 def create_user(*, first_name: str, last_name: str):
-    ...
+    user = User.objects.create(first_name=first_name, last_name=last_name)
+    return UserCreatedData.from_orm(user)
 
 
 def __convert_users_to_dto(users: list[User]):
     return [__convert_user_to_dto(user) for user in users]
 
 
-def __convert_user_to_dto(user: User) -> MessageDetailDTO:
+def __convert_user_to_dto(user: User) -> UserDetailDTO:
     return UserDetailDTO(
         first_name=user.first_name, last_name=user.last_name, id=user.id
     )
