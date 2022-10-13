@@ -1,6 +1,7 @@
 from django.db import transaction
 from message.business_logic.dtos import MessageDetailDTO
 from message.business_logic.exceptions import BusinessException, DomainModelNotFound
+from message.business_logic.validations import validate_message_creation
 
 from ..models import Message
 
@@ -16,8 +17,7 @@ def get_messages():
 def create_message(*, text: str, user_id: int):
 
     try:
-        assert len(text) > 0
-        assert user_id
+        validate_message_creation(text, user_id)
         message = Message.objects.create(text=text, user_id=user_id)
     except:
         raise BusinessException()

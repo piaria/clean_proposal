@@ -2,10 +2,12 @@ from user.business_logic.dtos import UserDetailDTO, UserCreatedData
 
 from ..models import User
 
+#repository = ...
 
 def get_users():
 
     users = User.objects.all()
+    #users = repository.get_users()
 
     return [__convert_user_to_dto(user) for user in users]
 
@@ -23,6 +25,7 @@ def get_users_by_id(ids: list[int]):
 
 
 def create_user(*, first_name: str, last_name: str):
+    """ pydantic """
     user = User.objects.create(first_name=first_name, last_name=last_name)
     return UserCreatedData.from_orm(user)
 
