@@ -29,5 +29,7 @@ class UsersViewSet(viewsets.ViewSet):
 
     @typed_action(detail=False, methods=["POST"])
     def post(self, user: UserData = Body()):
-        user_created = create_user(first_name=user["first_name"], last_name=user["last_name"])
+        user_created = create_user(
+            first_name=user["first_name"], last_name=user["last_name"]
+        )
         return Response(dict(user_created))
