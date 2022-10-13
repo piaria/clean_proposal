@@ -1,9 +1,23 @@
+from abc import ABC
 from django.db import transaction
 from message.business_logic.dtos import MessageDetailDTO
 from message.business_logic.exceptions import BusinessException, DomainModelNotFound
 from message.business_logic.validations import validate_message_creation
 
 from ..models import Message
+
+class UnitOfWork(ABC):
+    
+    def execute(*args, **kwargs):
+        ...
+        
+
+class GetMessageUOW(UnitOfWork):        
+
+    def execute(*args, **kwargs):
+        messages = Message.objects.all()
+
+        return [__convert_message_to_dto(message) for message in messages]
 
 
 def get_messages():
