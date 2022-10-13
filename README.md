@@ -57,3 +57,7 @@ def create_comment(comment: CommentSerializer):
 ```
 
 https://github.com/django-polymorphic/django-polymorphic
+
+
+CookieCutter para hacer templates de apps
+https://cookiecutter.readthedocs.io/en/1.7.2/ 
