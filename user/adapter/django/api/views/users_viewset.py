@@ -4,7 +4,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from user.api.serializers.user_detail_serializer import UserDetailSerializer
+from user.adapter.django.api.serializers.user_detail_serializer import UserDetailSerializer
 from user.adapter.logic.dtos import UserData
 from user.adapter.logic.exceptions import DomainModelNotFound
 from user.adapter.logic.units_of_work import get_users, get_user_by_id, create_user, get_full_name

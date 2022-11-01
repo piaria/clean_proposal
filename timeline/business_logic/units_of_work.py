@@ -2,8 +2,8 @@ from itertools import groupby
 from message.business_logic.dtos import MessageDetailDTO
 from message.business_logic.units_of_work import get_messages
 from timeline.business_logic.dtos import TimelineEntryDTO
-from user.adapter.logic.dtos import UserDetailDTO
-from user.adapter.logic.units_of_work import get_users_by_id
+from user import UserDetailDTO
+from user import get_users_by_id
 
 
 def get_timeline():

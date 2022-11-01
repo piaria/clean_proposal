@@ -18,7 +18,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 from rest_framework.schemas import get_schema_view
 from message.api import urls as message_urls
-from user.api import urls as user_urls
+from user import urls as user_urls
 from timeline.api import urls as timeline_urls
 
 urlpatterns = [

@@ -2,7 +2,7 @@ from user.adapter.logic.dtos import UserDetailDTO, UserCreatedData
 from user.adapter.repositories.django_user_repository import DjangoUserRepository
 from user.domain.user_service import UserService
 
-from user.models import User
+from user.adapter.django.models import User
 
 
 def get_users():

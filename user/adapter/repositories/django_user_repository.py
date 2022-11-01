@@ -1,6 +1,6 @@
-from user.domain.entities import UserEntity
-from user.domain.repository import UserRepository
-from user.models import User
+from user import UserEntity
+from user import UserRepository
+from user import User
 
 
 class DjangoUserRepository(UserRepository):
