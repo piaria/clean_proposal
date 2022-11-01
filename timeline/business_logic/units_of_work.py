@@ -1,11 +1,9 @@
 from itertools import groupby
-from operator import itemgetter
-from django.db import transaction
 from message.business_logic.dtos import MessageDetailDTO
 from message.business_logic.units_of_work import get_messages
 from timeline.business_logic.dtos import TimelineEntryDTO
-from user.business_logic.dtos import UserDetailDTO
-from user.business_logic.units_of_work import get_users_by_id
+from user.adapter.logic.dtos import UserDetailDTO
+from user.adapter.logic.units_of_work import get_users_by_id
 
 
 def get_timeline():

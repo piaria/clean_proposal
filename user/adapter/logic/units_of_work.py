@@ -1,26 +1,24 @@
-from user.business_logic.dtos import UserDetailDTO, UserCreatedData
+from user.adapter.logic.dtos import UserDetailDTO, UserCreatedData
+from user.adapter.repositories.django_user_repository import DjangoUserRepository
+from user.domain.user_service import UserService
 
-from ..models import User
+from user.models import User
 
-#repository = ...
 
 def get_users():
 
     users = User.objects.all()
-    #users = repository.get_users()
 
     return [__convert_user_to_dto(user) for user in users]
 
 
 def get_user_by_id(id: int):
     user = User.objects.get(pk=id)
-
     return __convert_user_to_dto(user)
 
 
 def get_users_by_id(ids: list[int]):
     users = User.objects.filter(id__in=ids)
-
     return __convert_users_to_dto(users)
 
 
@@ -38,3 +36,9 @@ def __convert_user_to_dto(user: User) -> UserDetailDTO:
     return UserDetailDTO(
         first_name=user.first_name, last_name=user.last_name, id=user.id
     )
+
+
+def get_full_name(pk: int):
+    repository = DjangoUserRepository()
+    user_service = UserService(repository)
+    return user_service.get_full_name(pk)
