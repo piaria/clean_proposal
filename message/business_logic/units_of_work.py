@@ -20,7 +20,7 @@ class GetMessageUOW(UnitOfWork):
         return [__convert_message_to_dto(message) for message in messages]
 
 
-def get_messages():
+def get_messages() -> list[MessageDetailDTO]:
 
     messages = Message.objects.all()
 
@@ -28,7 +28,7 @@ def get_messages():
 
 
 @transaction.atomic
-def create_message(*, text: str, user_id: int):
+def create_message(*, text: str, user_id: int) -> MessageDetailDTO:
 
     try:
         validate_message_creation(text, user_id)
